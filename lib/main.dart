@@ -7,13 +7,14 @@ void main() {
 }
 
 final ThemeData kIOSTheme = new ThemeData(
-  primarySwatch: Colors.orange,
+  primarySwatch: Colors.green[400],
   primaryColor: Colors.grey[100],
   primaryColorBrightness: Brightness.light,
 );
 
 final ThemeData kDefaultTheme = new ThemeData(
-  primarySwatch: Colors.purple,
+  primarySwatch: Colors.green[400],
+  primaryColor: Colors.grey[100],
   accentColor: Colors.orangeAccent[400],
 );
 
@@ -25,7 +26,65 @@ class FriendlychatApp extends StatelessWidget {
       theme: defaultTargetPlatform == TargetPlatform.iOS
           ? kIOSTheme
           : kDefaultTheme,
-      home: new ChatScreen(),
+      // home: new ChatScreen(),
+      home: new LoginScreen(),
+    );
+  }
+}
+
+class LoginScreen extends StatefulWidget {
+  @override
+  State createState() => new LoginScreenState();
+}
+
+class LoginScreenState extends State<LoginScreen> {
+  bool _isLoggedIn = false;
+  @override
+  Widget build(BuildContext context) {
+    return new Scaffold(
+      appBar: new AppBar(
+        title: new Text("Login"),
+        elevation: Theme.of(context).platform == TargetPlatform.iOS ? 0.0 : 4.0,
+      ),
+      body: new Container(
+        // alignment: Alignment.center,
+        decoration: new BoxDecoration(color: Colors.white),
+        child: new Center(
+          child: Column(
+            children: <Widget>[
+              new TextField(
+                // controller: _textController,
+                // onChanged: (String text) {
+                //   setState(() {
+                //     _isComposing = text.length > 0;
+                //   });
+                // },
+                // onSubmitted: _handleSubmitted,
+                decoration:
+                    new InputDecoration.collapsed(hintText: "Email"),
+              ),
+              new TextField(
+                // controller: _textController,
+                // onChanged: (String text) {
+                //   setState(() {
+                //     _isComposing = text.length > 0;
+                //   });
+                // },
+                // onSubmitted: _handleSubmitted,
+                decoration:
+                    new InputDecoration.collapsed(hintText: "Password"),
+              ),
+              new RaisedButton(
+                child: new Text("ログイン"),
+                onPressed: () {
+                  this._isLoggedIn = true;
+                  print("login button pressed");
+                },
+              ),
+            ],
+          ),
+        ),
+      ),
     );
   }
 }
