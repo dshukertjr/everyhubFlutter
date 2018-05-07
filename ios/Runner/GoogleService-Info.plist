@@ -7,21 +7,21 @@
 	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
 	<string>ca-app-pub-3940256099942544/4411468910</string>
 	<key>CLIENT_ID</key>
-	<string>977813923936-gsrjh7rjfafaoohscgot1q5iur7elhu5.apps.googleusercontent.com</string>
+	<string>657318010905-5kh8rmk13nva51i0l8e4c5ejfakbrbv9.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.977813923936-gsrjh7rjfafaoohscgot1q5iur7elhu5</string>
+	<string>com.googleusercontent.apps.657318010905-5kh8rmk13nva51i0l8e4c5ejfakbrbv9</string>
 	<key>API_KEY</key>
-	<string>AIzaSyAGv9YRfF26PTVUpEzcjqFdHOItInZFzDc</string>
+	<string>AIzaSyAHRHHQPgDAge8ZkWFNy6p1aW0rjeHpm7Q</string>
 	<key>GCM_SENDER_ID</key>
-	<string>977813923936</string>
+	<string>657318010905</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>com.example.everyhub</string>
 	<key>PROJECT_ID</key>
-	<string>everyhubjob</string>
+	<string>drink-f8aff</string>
 	<key>STORAGE_BUCKET</key>
-	<string>everyhubjob.appspot.com</string>
+	<string>drink-f8aff.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<true></true>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -33,8 +33,8 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:977813923936:ios:77dcf6268ddbd6ec</string>
+	<string>1:657318010905:ios:77dcf6268ddbd6ec</string>
 	<key>DATABASE_URL</key>
-	<string>https://everyhubjob.firebaseio.com</string>
+	<string>https://drink-f8aff.firebaseio.com</string>
 </dict>
 </plist>

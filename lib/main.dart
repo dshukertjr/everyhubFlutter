@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/cupertino.dart';
 
@@ -7,25 +8,35 @@ void main() {
 }
 
 final ThemeData kIOSTheme = new ThemeData(
-  primarySwatch: Colors.green[400],
-  primaryColor: Colors.grey[100],
-  primaryColorBrightness: Brightness.light,
+  // primarySwatch: Color(0xFF42A5F5),
+  // primaryColor: Colors.grey[100],
+  primaryColor: Color(0xFF00a99d),
+  // primaryColor: Colors.green[900],
+  backgroundColor: Color(0xFFFFFFFF),
+  buttonColor: Color(0xFF00a99d),
+  // primaryColorBrightness: Brightness.light,
+  accentColor: Colors.orange[500],
 );
 
-final ThemeData kDefaultTheme = new ThemeData(
-  primarySwatch: Colors.green[400],
-  primaryColor: Colors.grey[100],
-  accentColor: Colors.orangeAccent[400],
-);
+// final ThemeData kDefaultTheme = new ThemeData(
+//   primarySwatch: Colors.green[400],
+//   primaryColor: Colors.grey[100],
+//   accentColor: Colors.orangeAccent[400],
+// );
 
 class FriendlychatApp extends StatelessWidget {
+
+
+
+  
   @override
   Widget build(BuildContext context) {
     return new MaterialApp(
       title: "Friendlychat",
-      theme: defaultTargetPlatform == TargetPlatform.iOS
-          ? kIOSTheme
-          : kDefaultTheme,
+      // theme: defaultTargetPlatform == TargetPlatform.iOS
+      //     ? kIOSTheme
+      //     : kDefaultTheme,
+      theme: kIOSTheme,
       // home: new ChatScreen(),
       home: new LoginScreen(),
     );
@@ -38,52 +49,70 @@ class LoginScreen extends StatefulWidget {
 }
 
 class LoginScreenState extends State<LoginScreen> {
-  bool _isLoggedIn = false;
+  final TextEditingController _emailController = new TextEditingController();
+  final TextEditingController _passwordController = new TextEditingController();
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
       appBar: new AppBar(
-        title: new Text("Login"),
+        title: new Text("Everyhubへようこそ"),
         elevation: Theme.of(context).platform == TargetPlatform.iOS ? 0.0 : 4.0,
       ),
       body: new Container(
         // alignment: Alignment.center,
-        decoration: new BoxDecoration(color: Colors.white),
+        // decoration: new BoxDecoration(color: Colors.white),
         child: new Center(
+            child: new Padding(
+          padding: new EdgeInsets.fromLTRB(8.0 , 0.0, 8.0, 16.0),
           child: Column(
+            mainAxisSize: MainAxisSize.min,
             children: <Widget>[
-              new TextField(
-                // controller: _textController,
-                // onChanged: (String text) {
-                //   setState(() {
-                //     _isComposing = text.length > 0;
-                //   });
-                // },
-                // onSubmitted: _handleSubmitted,
-                decoration:
-                    new InputDecoration.collapsed(hintText: "Email"),
+              new Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: new TextFormField(
+                  controller: _emailController,
+                  decoration: new InputDecoration(
+                    border: const UnderlineInputBorder(),
+                    filled: true,
+                    // hintText: "Email",
+                    labelText: "Email",
+                  ),
+                  textAlign: TextAlign.center,
+                  keyboardType: TextInputType.emailAddress,
+                ),
               ),
-              new TextField(
-                // controller: _textController,
-                // onChanged: (String text) {
-                //   setState(() {
-                //     _isComposing = text.length > 0;
-                //   });
-                // },
-                // onSubmitted: _handleSubmitted,
-                decoration:
-                    new InputDecoration.collapsed(hintText: "Password"),
+              new Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: new TextField(
+                  controller: _passwordController,
+                  decoration: new InputDecoration(
+                    border: const UnderlineInputBorder(),
+                    filled: true,
+                    // hintText: "Email",
+                    labelText: " Password",
+                  ),
+                  textAlign: TextAlign.center,
+                  obscureText: true,
+                ),
               ),
-              new RaisedButton(
-                child: new Text("ログイン"),
-                onPressed: () {
-                  this._isLoggedIn = true;
-                  print("login button pressed");
-                },
+              new Padding(
+                padding: new EdgeInsets.all(8.0),
+                child: new Row(
+                  children: <Widget>[
+                    new Expanded(
+                      child: new RaisedButton(
+                        child: new Text("ログイン"),
+                        onPressed: () {
+                          print("login button pressed");
+                        },
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ],
           ),
-        ),
+        )),
       ),
     );
   }
