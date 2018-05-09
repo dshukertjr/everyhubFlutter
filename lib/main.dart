@@ -2,6 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/cupertino.dart';
+import 'dart:async';
+import 'dart:collection';
+import 'dart:core';
+
+// import 'package:firebase_auth/firebase_auth.dart' show FirebaseAuth;
+import 'package:firebase_auth/firebase_auth.dart';
 
 void main() {
   runApp(new FriendlychatApp());
@@ -25,10 +31,6 @@ final ThemeData kIOSTheme = new ThemeData(
 // );
 
 class FriendlychatApp extends StatelessWidget {
-
-
-
-  
   @override
   Widget build(BuildContext context) {
     return new MaterialApp(
@@ -51,6 +53,8 @@ class LoginScreen extends StatefulWidget {
 class LoginScreenState extends State<LoginScreen> {
   final TextEditingController _emailController = new TextEditingController();
   final TextEditingController _passwordController = new TextEditingController();
+  final FirebaseAuth firebaseUser = FirebaseAuth.instance;
+
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
@@ -63,7 +67,7 @@ class LoginScreenState extends State<LoginScreen> {
         // decoration: new BoxDecoration(color: Colors.white),
         child: new Center(
             child: new Padding(
-          padding: new EdgeInsets.fromLTRB(8.0 , 0.0, 8.0, 16.0),
+          padding: new EdgeInsets.fromLTRB(8.0, 0.0, 8.0, 16.0),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
@@ -102,9 +106,9 @@ class LoginScreenState extends State<LoginScreen> {
                     new Expanded(
                       child: new RaisedButton(
                         child: new Text("ログイン"),
-                        onPressed: () {
-                          print("login button pressed");
-                        },
+                        onPressed: () => _handleLogin(_emailController.text, _passwordController.text)
+                            .then((FirebaseUser user) => print(user))
+                            .catchError((e) => print(e)),
                       ),
                     ),
                   ],
@@ -115,6 +119,16 @@ class LoginScreenState extends State<LoginScreen> {
         )),
       ),
     );
+  }
+
+  Future<FirebaseUser> _handleLogin(String email, String password) async {
+    print(email);
+    print(password);
+    FirebaseUser user = await firebaseUser.signInWithEmailAndPassword(
+        email: email, password: password);
+    print("done logging in");
+    print(firebaseUser);
+    return user;
   }
 }
 
